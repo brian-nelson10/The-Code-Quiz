@@ -1,0 +1,124 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Helvetica', sans-serif;
+}
+
+body {
+    background-color: darksalmon;
+}
+
+.startbtn button{
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    box-shadow: 0 15px 20px 0px;
+    font-size: 30px;
+    font-weight: 500;
+    color: darksalmon;
+    padding: 15px 30px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    background: #fff;
+    cursor: pointer;
+}
+
+.startbtn :hover {
+    
+    background-color: darkgreen;
+}
+
+.startbtn, .rulebox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.rulebox.activeInfo,
+.quizbox.activeQuiz,
+.result_box.activeResult{
+    opacity: 1;
+    z-index: 5;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.rulebox {
+width: 540px;
+background: #fff;
+border-radius: 5px;
+transform: translate(-50%, -50%) scale(0.9);
+opacity: 0;
+pointer-events: none;
+transition: all 0.3s ease;
+}
+
+.rulebox .rules {
+    height: 60px;
+    width: 100%;
+    border-bottom: 1px solid darkgreen;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    font-size: 20px;
+    font-weight: 700;
+    justify-content: center;
+    color: darksalmon;
+}
+
+.rulebox .rules-list {
+    padding: 20px 30px;
+}
+
+.rulebox .list {
+    margin: 5px 0;
+    font-size: 18px;
+    font-weight: 400;
+    color: darksalmon;
+    list-style: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.rulebox .startbtn2 {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 30px;
+    border-top: 1px solid darkgreen;
+}
+
+ .startbtn2 button {
+    margin: auto;
+    height: 40px;
+    width: 100px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    border: .8px solid black;
+    transition: all 0.3s ease;
+}
+
+.startbtn2 :hover {
+    background-color: darkgreen;
+    color: darksalmon;
+}
+
+.quizbox {
+    width: 550px;
+    background: #fff;
+    border-radius: 5px;
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+
