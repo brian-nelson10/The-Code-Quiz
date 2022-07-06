@@ -16,7 +16,7 @@
     <div class="rules"><span>THE RULES!</span></div>
     <div class="rules-list">
         <ul class="list"> 
-            <li>You will have 600 seconds to complete quiz.</li>
+            <li>You will have 500 seconds to complete quiz.</li>
             <li> If you Select Wrong Answer you will be deducted time.</li>
             <li> GOOD LUCK!</li>
         </ul>
@@ -30,15 +30,15 @@
 <!--the quiz box-->
 <div class="quizbox">
     <header>
-        <div class="title">Awesome Quiz Application</div>
+        <div class="title">CODER QUIZ</div>
         <div class="timer">
-            <div class="time_left_txt">Time Left</div>
-            <div class="timer_sec">15</div>
+            <div class="timeleft">Time: </div>
+            <div class="timerlive">500</div>
         </div>
-        <div class="time_line"></div>
+        <div class="linecounter"></div>
     </header>
     <section>
-        <div class="que_text">
+        <div class="questiontext">
             <!-- Here I've inserted question from JavaScript -->
         </div>
         <div class="option_list">
@@ -51,16 +51,25 @@
         <div class="total_que">
             <!-- Here I've inserted Question Count Number from JavaScript -->
         </div>
-        <button class="next_btn">Next Que</button>
+        <button class="next_btn">Next Question</button>
     </footer>
 </div>
 
-
+    <!-- Result Box -->
+    <div class="result_box">
+        <div class="complete_text">You've completed the Quiz!</div>
+        <div class="score_text">
+            <!-- Here I've inserted Score Result from JavaScript -->
+        </div>
+        <div class="buttons">
+            <button class="restart">Replay Quiz</button>
+            <button class="quit">Quit Quiz</button>
+        </div>
+    </div>
 
 <script src="script.js"></script>
 
 
-    
 </body>
 
 </html>
