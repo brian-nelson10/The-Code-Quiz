@@ -57,14 +57,36 @@
 
     <!-- Result Box -->
     <div class="result_box">
-        <div class="complete_text">You've completed the Quiz!</div>
+        <div class="complete_text">QUIZ COMPLETE!</div>
+
         <div class="score_text">
             <!-- Here I've inserted Score Result from JavaScript -->
         </div>
+
+        <div class="nameform">
+            <form>
+                <label for="name">Enter Name</label>
+                <input type="text" placeholder="Enter Name" id="name"/>
+            </form>
+        </div>
+
+        <div class="submit">
+            <button class="submitbtn" type="submit">
+                Submit 
+            </button>
+        </div>
+        
+    </div>
+
+    <div class="scorebox">
+        <div class="scoretitle">HIGH SCORES.</div>
+        <div class="ul">
+            <ul></ul>
+        </div>
         <div class="buttons">
             <button class="restart">Replay Quiz</button>
-            <button class="quit">Quit Quiz</button>
         </div>
+
     </div>
 
 <script src="script.js"></script>

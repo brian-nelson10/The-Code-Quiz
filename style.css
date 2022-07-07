@@ -24,11 +24,10 @@ body {
 }
 
 .startbtn :hover {
-    
     background-color: darkgreen;
 }
 
-.startbtn, .rulebox, .result_box {
+.startbtn, .rulebox, .result_box, .scorebox {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -37,7 +36,8 @@ body {
 
 .rulebox.activeInfo,
 .quizbox.activeQuiz,
-.result_box.activeResult {
+.result_box.activeResult,
+.scorebox.activeScore {
     opacity: 1;
     z-index: 5;
     pointer-events: auto;
@@ -281,7 +281,7 @@ footer .total_que span p:first-child{
     padding-left: 0px;
 }
 
-.result_box{
+.result_box {
     background: #fff;
     border-radius: 5px;
     display: flex;
@@ -297,28 +297,85 @@ footer .total_que span p:first-child{
 }
 
 .result_box .complete_text{
-    font-size: 20px;
+    font-size: 25px;
     font-weight: 500;
+    color: darksalmon;
+    border-bottom: 1px solid darkgreen;
+    padding: 6px;
+
 }
 
 .result_box .score_text span{
     display: flex;
     margin: 10px 0;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 500;
+    color: darksalmon;
+    border-bottom: 1px solid darkgreen;
+    padding: 6px;
 }
 
 .result_box .score_text span p{
     padding: 0 4px;
     font-weight: 600;
+    color: darkgreen;
 }
 
-.result_box .buttons{
+.result_box .nameform {
+    font-weight: 600;
+    color: darkgreen;
+    padding: 20px 20px;
+}
+
+.result_box .submitbtn{
     display: flex;
     margin: 20px 0;
 }
 
-.result_box .buttons button{
+button.submitbtn {
+    height: 45px;
+    padding: 0 20px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid darkgreen;
+    align-items: center;
+    color: darksalmon;
+    background-color: white;
+}
+
+ .submitbtn:hover {
+    color: darksalmon;
+    background: darkgreen;
+}
+
+.scorebox {
+    background: #fff;
+    border-radius: 5px;
+    display: flex;
+    padding: 25px 30px;
+    width: 450px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.scorebox .scoretitle{
+    font-size: 28px;
+    font-weight: 700;
+    color: darksalmon;
+}
+
+.scorebox .buttons{
+    display: flex;
+    margin: 20px 0;
+}
+
+.scorebox .buttons button{
     margin: 0 10px;
     height: 45px;
     padding: 0 20px;
@@ -328,25 +385,15 @@ footer .total_que span p:first-child{
     border: none;
     outline: none;
     border-radius: 5px;
-    border: 1px solid #007bff;
-    transition: all 0.3s ease;
+    border: 1px solid darkgreen;
 }
 
 .buttons button.restart{
-    color: #fff;
-    background: #007bff;
+    color: darksalmon;
+    background: white;
 }
 
 .buttons button.restart:hover{
-    background: #0263ca;
-}
-
-.buttons button.quit{
-    color: #007bff;
-    background: #fff;
-}
-
-.buttons button.quit:hover{
-    color: #fff;
-    background: #007bff;
+    background: darkgreen;
+    color: darksalmon;
 }
