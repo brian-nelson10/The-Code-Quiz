@@ -10,15 +10,13 @@ body {
 }
 
 .startbtn button{
-    position: absolute;
-    box-shadow: 0 15px 20px 0px;
+    position: relative;
     font-size: 30px;
     font-weight: 500;
     color: darksalmon;
     padding: 30px 50px;
-    outline: none;
     border: none;
-    border-radius: 10px;
+    border-radius: 20px;
     background: #fff;
     cursor: pointer;
 }

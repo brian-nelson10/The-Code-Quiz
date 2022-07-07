@@ -29,7 +29,6 @@ let que_count = 0;
 let que_numb = 1;
 let userScore = 0;
 let counter;
-let counterLine;
 let widthValue = 0;
 
 
@@ -75,7 +74,7 @@ function showQuetions(index){
         
     }
 
-// creating an array and passing the number, questions, options, and answers
+//array passing the number, questions, options, and answers
 let questions = [
     {
     numb: 1,
@@ -139,17 +138,17 @@ function optionSelected(answer){
 
     let userAns = answer.textContent; //getting user selected option
     let correcAns = questions[que_count].answer; //getting correct answer from array
-    const allOptions = option_list.children.length; //getting all option items
+    var allOptions = option_list.children.length; //getting all option items
     
     if(userAns == correcAns){ //if user selected option is equal to array's correct answer
 
-        userScore += 1; //upgrading score value with 1
-        answer.classList.add("correct"); //adding green color to correct selected option
+        userScore += 1; //upgrade score value with 1
+        answer.classList.add("correct"); //add green color to correct selected option
         console.log("Your correct answers = " + userScore);
 
     }else{
 
-        answer.classList.add("incorrect"); //adding red color to correct selected option
+        answer.classList.add("incorrect"); //adding red color to incorrect selected option
         
         for(i=0; i < allOptions; i++){
             if(option_list.children[i].textContent == correcAns){ //if there is an option which is matched to an array answer 
@@ -168,101 +167,73 @@ function optionSelected(answer){
 }
 
 var submitbtn = document.querySelector(".submit .submitbtn");
-
+ var highScore = localStorage.getItem("highscore");
+ if (highScore === null) {
+   highScore = 0;
+ }
 
 function showResult(){
     quizbox.classList.remove("activeQuiz"); //hide quiz box
     result_box.classList.add("activeResult"); //show result box
-    const scoreText = result_box.querySelector(".score_text");
-
-    if (userScore > 1){ // if user scored more than 1
+    var scoreText = result_box.querySelector(".score_text");
+    var nameText = result_box.querySelector(".nametext");
+    var formText = result_box.querySelector(".nameform");
+    if (userScore > 1){ 
         //creating a new span tag and passing the user score number and total question number
         let scoreTag = '<span>Congragulations! , You Scored <p>'+ userScore +'</p> out of <p>'+ questions.length +'</p></span>';
         scoreText.innerHTML = scoreTag;  //adding new span tag inside score_Text
     }
-    
+    if (userScore > highScore) {
+      let nameTag = '<span>ENTER NAME</span>';
+      let formTag = '<form><label for="name">Enter Name</label><input type="text" placeholder="Enter Name" id="name"/></form>'
+      nameText.innerHTML = nameTag;
+      formText.innerHTML = formTag;
+      
+      localStorage.setItem("highscore", userScore);
+      
+  }
 }
 
- // function to end the entire game
- //var endGame = function() {
-   // window.alert("The game has now ended. Let's see how you did!");
+  var getUserName = function() {
+    var userName = "";
+    while (userName ==="") {
+      userName = getElementByInput("name");
+          return userName;
+    }
+    localStorage.setItem("name", userName);
+  }
   
-    // check localStorage for high score, if it's not there, use 0
-    //var highScore = localStorage.getItem("highscore");
-    //if (highScore === null) {
-      //highScore = 0;
-    //}
-  
-    // if player has more money than the high score, player has new high score!
-    //if (playerInfo.money > highScore) {
-      //localStorage.setItem("highscore", playerInfo.money);
-      //localStorage.setItem("name", playerInfo.name);
-  
-      //alert(playerInfo.name + " now has the high score of " + playerInfo.money + "!");
-    //} else {
-      //alert(playerInfo.name + " did not beat the high score of " + highScore + ". Maybe next time!");
-    //}
-  
-    // ask player if they'd like to play again
-    //var playAgainConfirm = window.confirm("Would you like to play again?");
-
-
-
-
+ 
 //if submit button is clicked
 submitbtn.onclick = ()=>{
     scoreBox();
 }
 
-let highScore = "";
-
 function scoreBox(){
     result_box.classList.remove("activeResult");
     scorebox.classList.add("activeScore");
+    var highText = scorebox.querySelector(".ul")
 
-    //var highScore = localStorage.getItem("highscore");
-    if (highScore === null) {
-            highScore = 0;
-        }
-    if (userScore > highScore) {
-        alert(userScore);
-        
- //       function liMaker(text) {
-   //         var li = document.createElement('li')
-     //       li.textContent = text
-      //      ul.appendChild(li)
-       // }
-       // form.addEventListener("submit", function(event) {
-         //   event.preventDefault();
-          //  liMaker(input.value);
-        //input.value = "";
-
-            
-       // })
-
-       
+    let highTag = '<ul><p>'+ userName +'</p></ul>';
+    highText.innerHTML = highTag;
     }
-}
 
- //localStorage.setItem("highscore", userScore);
- //localStorage.setItem("name", input )
 
  var restartquiz = scorebox.querySelector(".buttons .restart");
 
- // if restartQuiz button clicked
+ // if restart button is clicked
  restartquiz.onclick = ()=>{
-     quizbox.classList.add("activeQuiz"); //show quiz box
-     scorebox.classList.remove("activeScore"); //hide box
+     quizbox.classList.add("activeQuiz"); 
+     scorebox.classList.remove("activeScore"); 
      timeValue = 500; 
      que_count = 0;
      que_numb = 1;
      userScore = 0;
      widthValue = 0;
-     showQuetions(que_count); //calling showQestions function
-     queCounter(que_numb); //passing que_numb value to queCounter
-     startTimer(timeValue); //calling startTimer function
-     timeText.textContent = "Time Left"; //change the text of timeText to Time Left
-     next_btn.classList.remove("show"); //hide the next button
+     showQuetions(que_count); 
+     queCounter(que_numb); 
+     startTimer(timeValue); 
+     next_btn.classList.remove("show");
  }
  
 
@@ -271,12 +242,12 @@ function startTimer(time){
     counter = setInterval(timer, 1000);
     function timer(){
         timeCount.textContent = time; //changing the value of timeCount with time value
-        time--; //decrement the time value
+        time--; 
         }
 
         if(time < 0){ //if timer is less than 0
             clearInterval(counter); //clear counter
-            timeText.textContent = "Time Over"; //change the time text to time off
+            timeText.textContent = "Time Over"; 
             const allOptions = option_list.children.length; //getting all option items
             let correcAns = questions[que_count].answer; //getting correct answer from array
             for(i=0; i < allOptions; i++){
@@ -293,9 +264,10 @@ function startTimer(time){
     }
 
 function queCounter(index){
+
     //creating a new span tag and passing the question number and total question
     let totalQueCounTag = '<span><p>'+ index +'</p> of <p>'+ questions.length +'</p> Questions</span>';
-    bottom_ques_counter.innerHTML = totalQueCounTag;  //adding new span tag inside bottom_ques_counter
+    bottom_ques_counter.innerHTML = totalQueCounTag; 
 }
 
 
