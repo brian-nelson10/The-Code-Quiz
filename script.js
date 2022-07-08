@@ -186,8 +186,8 @@ function showResult(){
     if (userScore > highScore){ 
        
         let congratsTag = '<span> Congratulations! You got a HIGH SCORE!! </span>';
-        let nameTag = '<span>ENTER NAME</span>';
-        let formTag = '<form><label for="name">Enter Name</label><input type="text" placeholder="Enter Name" id="name"/></form>'
+        let nameTag = '<span></span>';
+        let formTag = '<form><label for="name">Enter Name</label><input type="text" placeholder="Enter Name" id="name"/></form>';
         congratsText.innerHTML = congratsTag;  
         nameText.innerHTML = nameTag;
         formText.innerHTML = formTag;
