@@ -140,23 +140,25 @@ function optionSelected(answer){
     let userAns = answer.textContent; 
     let correcAns = questions[que_count].answer; 
     var allOptions = option_list.children.length; 
+    var sec =0; 
     
     if(userAns == correcAns){ 
 
         userScore += 1; 
         answer.classList.add("correct"); 
-        console.log("Your correct answers = " + userScore);
 
     }else{
 
         answer.classList.add("incorrect"); 
+        document.getElementsByClassName("incorrect"); {
+          sec -= 10;
+          document.getElementById("livetime").innerHTML= sec;
+        }
         
         for(i=0; i < allOptions; i++){
 
             if(option_list.children[i].textContent == correcAns){ 
                 option_list.children[i].setAttribute("class", "option correct"); 
-                console.log("Auto selected correct answer.");
-
             }
         }
     }
@@ -181,7 +183,7 @@ function showResult(){
     var nameText = result_box.querySelector(".nametext");
     var formText = result_box.querySelector(".nameform");
 
-    if (userScore > 1){ 
+    if (userScore > highScore){ 
        
         let congratsTag = '<span> Congratulations! You got a HIGH SCORE!! </span>';
         let nameTag = '<span>ENTER NAME</span>';
