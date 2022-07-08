@@ -49,7 +49,7 @@ border-radius: 5px;
 transform: translate(-50%, -50%) scale(0.9);
 opacity: 0;
 pointer-events: none;
-transition: all 0.3s ease;
+transition: all 2s ease;
 }
 
 .rulebox .rules {
@@ -210,13 +210,13 @@ section .option_list .option:hover{
 
 section .option_list .option.correct{
     color: #155724;
-    background: #d4edda;
+    background: lightgreen;
     border: 1px solid green;
 }
 
 section .option_list .option.incorrect{
     color: #721c24;
-    background: #f8d7da;
+    background: lightpink;
     border: 1px solid red;
 }
 
@@ -303,7 +303,7 @@ footer .total_que span p:first-child{
 
 }
 
-.result_box .score_text span{
+.result_box .congrats span{
     display: flex;
     margin: 10px 0;
     font-size: 20px;
@@ -313,7 +313,7 @@ footer .total_que span p:first-child{
     padding: 6px;
 }
 
-.result_box .score_text span p{
+.result_box .congrats span p{
     padding: 0 4px;
     font-weight: 600;
     color: darkgreen;
@@ -366,6 +366,13 @@ button.submitbtn {
     font-size: 28px;
     font-weight: 700;
     color: darksalmon;
+}
+
+.scorebox .ul li{
+    padding: 0 4px;
+    font-weight: 600;
+    color: darkgreen;
+    list-style-type: upper-roman;
 }
 
 .scorebox .buttons{

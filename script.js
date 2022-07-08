@@ -19,8 +19,8 @@ startbtn2.onclick = ()=>{
     document.getElementById("ruleboxx").remove();
     quizbox.classList.add("activeQuiz");
     showQuetions(0); 
-    queCounter(1); //passing 1 to Counter
-    startTimer(500); //calling startTimer function
+    queCounter(1); 
+    startTimer(500); 
 
 }
 
@@ -39,16 +39,16 @@ var bottom_ques_counter = document.querySelector("footer .total_que");
 // if Next Question button is clicked
 next_btn.onclick = ()=>{
 
-    if(que_count < questions.length - 1){ //if question count is less than total question length
-        que_count++; //increment the q count value
-        que_numb++; //increment the q numb value
-        showQuetions(que_count); //calling showQuestions function
-        queCounter(que_numb); //passing q numb value to Counter
-        next_btn.classList.remove("show"); //hide next button
+    if(que_count < questions.length - 1){ 
+        que_count++; 
+        que_numb++; 
+        showQuetions(que_count); 
+        queCounter(que_numb); 
+        next_btn.classList.remove("show"); 
 
     }else {
         clearInterval(counter);
-        showResult(); //calling showResult function
+        showResult(); 
     }
 }
 
@@ -56,14 +56,15 @@ next_btn.onclick = ()=>{
 function showQuetions(index){
     var que_text = document.querySelector(".questiontext");
 
-        //creating a new span and div tag for question and option and passing the value using array index
+        //creating a new span and div tag for question and option
         let que_tag = '<span>'+ questions[index].numb + ". " + questions[index].question +'</span>';
         let option_tag = '<div class="option"><span>'+ questions[index].options[0] +'</span></div>'
         + '<div class="option"><span>'+ questions[index].options[1] +'</span></div>'
         + '<div class="option"><span>'+ questions[index].options[2] +'</span></div>'
         + '<div class="option"><span>'+ questions[index].options[3] +'</span></div>';
-        que_text.innerHTML = que_tag; //adding new span tag inside que_tag
-        option_list.innerHTML = option_tag; //adding new div tag inside option_tag
+
+        que_text.innerHTML = que_tag; 
+        option_list.innerHTML = option_tag; 
         
         var option = option_list.querySelectorAll(".option");
     
@@ -122,13 +123,13 @@ let questions = [
   },
     {
     numb: 5,
-    question: "What does XML stand for?",
-    answer: "eXtensible Markup Language",
+    question: "What is BootStrap?",
+    answer: "A CSS Framework",
     options: [
-      "eXtensible Markup Language",
-      "eXecutable Multiple Language",
-      "eXTra Multi-Program Language",
-      "eXamine Multiple Language"
+      "An Html Shortcut",
+      "A CSS Framework",
+      "Another Language",
+      "A western style shoe accessory"
     ]
   },
 ];
@@ -136,23 +137,24 @@ let questions = [
     //if user clicked on option
 function optionSelected(answer){
 
-    let userAns = answer.textContent; //getting user selected option
-    let correcAns = questions[que_count].answer; //getting correct answer from array
-    var allOptions = option_list.children.length; //getting all option items
+    let userAns = answer.textContent; 
+    let correcAns = questions[que_count].answer; 
+    var allOptions = option_list.children.length; 
     
-    if(userAns == correcAns){ //if user selected option is equal to array's correct answer
+    if(userAns == correcAns){ 
 
-        userScore += 1; //upgrade score value with 1
-        answer.classList.add("correct"); //add green color to correct selected option
+        userScore += 1; 
+        answer.classList.add("correct"); 
         console.log("Your correct answers = " + userScore);
 
     }else{
 
-        answer.classList.add("incorrect"); //adding red color to incorrect selected option
+        answer.classList.add("incorrect"); 
         
         for(i=0; i < allOptions; i++){
-            if(option_list.children[i].textContent == correcAns){ //if there is an option which is matched to an array answer 
-                option_list.children[i].setAttribute("class", "option correct"); //adding green color to matched option
+
+            if(option_list.children[i].textContent == correcAns){ 
+                option_list.children[i].setAttribute("class", "option correct"); 
                 console.log("Auto selected correct answer.");
 
             }
@@ -173,37 +175,26 @@ var submitbtn = document.querySelector(".submit .submitbtn");
  }
 
 function showResult(){
-    quizbox.classList.remove("activeQuiz"); //hide quiz box
-    result_box.classList.add("activeResult"); //show result box
-    var scoreText = result_box.querySelector(".score_text");
+    quizbox.classList.remove("activeQuiz"); 
+    result_box.classList.add("activeResult"); 
+    var congratsText = result_box.querySelector(".congrats");
     var nameText = result_box.querySelector(".nametext");
     var formText = result_box.querySelector(".nameform");
-    if (userScore > 1){ 
-        //creating a new span tag and passing the user score number and total question number
-        let scoreTag = '<span>Congragulations! , You Scored <p>'+ userScore +'</p> out of <p>'+ questions.length +'</p></span>';
-        scoreText.innerHTML = scoreTag;  //adding new span tag inside score_Text
-    }
-    if (userScore > highScore) {
-      let nameTag = '<span>ENTER NAME</span>';
-      let formTag = '<form><label for="name">Enter Name</label><input type="text" placeholder="Enter Name" id="name"/></form>'
-      nameText.innerHTML = nameTag;
-      formText.innerHTML = formTag;
-      
-      localStorage.setItem("highscore", userScore);
-      
-  }
-}
 
-  var getUserName = function() {
-    var userName = "";
-    while (userName ==="") {
-      userName = getElementByInput("name");
-          return userName;
-    }
-    localStorage.setItem("name", userName);
+    if (userScore > 1){ 
+       
+        let congratsTag = '<span> Congratulations! You got a HIGH SCORE!! </span>';
+        let nameTag = '<span>ENTER NAME</span>';
+        let formTag = '<form><label for="name">Enter Name</label><input type="text" placeholder="Enter Name" id="name"/></form>'
+        congratsText.innerHTML = congratsTag;  
+        nameText.innerHTML = nameTag;
+        formText.innerHTML = formTag;
+
+        localStorage.setItem("highscore", userScore);
+        
+    }      
   }
-  
- 
+
 //if submit button is clicked
 submitbtn.onclick = ()=>{
     scoreBox();
@@ -212,9 +203,9 @@ submitbtn.onclick = ()=>{
 function scoreBox(){
     result_box.classList.remove("activeResult");
     scorebox.classList.add("activeScore");
-    var highText = scorebox.querySelector(".ul")
-
-    let highTag = '<ul><p>'+ userName +'</p></ul>';
+    var highText = scorebox.querySelector(".ul");
+    let userName = document.getElementById("name").value;
+    let highTag = '<li>'+ userName +'</li>';
     highText.innerHTML = highTag;
     }
 
@@ -241,31 +232,32 @@ function scoreBox(){
 function startTimer(time){
     counter = setInterval(timer, 1000);
     function timer(){
-        timeCount.textContent = time; //changing the value of timeCount with time value
+        timeCount.textContent = time; 
         time--; 
         }
-
-        if(time < 0){ //if timer is less than 0
-            clearInterval(counter); //clear counter
+        //if timer is less than 0
+        if(time < 0){ 
+            clearInterval(counter); 
             timeText.textContent = "Time Over"; 
-            const allOptions = option_list.children.length; //getting all option items
-            let correcAns = questions[que_count].answer; //getting correct answer from array
+            const allOptions = option_list.children.length;
+            let correcAns = questions[que_count].answer; 
             for(i=0; i < allOptions; i++){
                 
-                if(option_list.children[i].textContent == correcAns){ //if there is an option which is matched to an array answer
-                    option_list.children[i].setAttribute("class", "option correct"); //adding green color to matched option
+                if(option_list.children[i].textContent == correcAns){ 
+                    option_list.children[i].setAttribute("class", "option correct"); 
                 }
             }
             for(i=0; i < allOptions; i++){
-                option_list.children[i].classList.add("disabled"); //once user select an option then disabled all options
+                option_list.children[i].classList.add("disabled"); 
             }
-            next_btn.classList.add("show"); //show the next button if user selected any option
+            next_btn.classList.add("show"); 
         }
     }
 
 function queCounter(index){
 
-    //creating a new span tag and passing the question number and total question
+    //create a new span tag and passing the question number and total question
+
     let totalQueCounTag = '<span><p>'+ index +'</p> of <p>'+ questions.length +'</p> Questions</span>';
     bottom_ques_counter.innerHTML = totalQueCounTag; 
 }
