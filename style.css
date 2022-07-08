@@ -303,6 +303,14 @@ footer .total_que span p:first-child{
 
 }
 
+.result_box .nametext {
+    font-size: 25px;
+    font-weight: 500;
+    color: darksalmon;
+    border-bottom: 1px solid darkgreen;
+    padding: 6px;
+}
+
 .result_box .congrats span{
     display: flex;
     margin: 10px 0;

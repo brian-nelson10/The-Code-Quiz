@@ -183,11 +183,12 @@ function showResult(){
     var nameText = result_box.querySelector(".nametext");
     var formText = result_box.querySelector(".nameform");
 
-    if (userScore > highScore){ 
+    if (userScore > highScore, userScore === 5)
+    { 
        
         let congratsTag = '<span> Congratulations! You got a HIGH SCORE!! </span>';
-        let nameTag = '<span></span>';
-        let formTag = '<form><label for="name">Enter Name</label><input type="text" placeholder="Enter Name" id="name"/></form>';
+        let nameTag = '<span>Please Enter Name Below</span>';
+        let formTag = '<form onsubmit="return addUser()"><label for="name">Enter Name</label><input type="text" placeholder="Enter Name" id="name"/></form>'
         congratsText.innerHTML = congratsTag;  
         nameText.innerHTML = nameTag;
         formText.innerHTML = formTag;
@@ -209,7 +210,11 @@ function scoreBox(){
     let userName = document.getElementById("name").value;
     let highTag = '<li>'+ userName +'</li>';
     highText.innerHTML = highTag;
-    }
+    document.getElementById('name').innerHTML=userName;
+    localStorage.setItem("name", userName);
+    localStorage.getItem("name", userName);
+
+  }
 
 
  var restartquiz = scorebox.querySelector(".buttons .restart");
